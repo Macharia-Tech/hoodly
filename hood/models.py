@@ -108,8 +108,8 @@ class Business(models.Model):
   name = models.CharField(max_length=30)
   description = models.TextField(default="",blank=True,null=True)
   email = models.EmailField()
-  user = models.ForeignKey(User,null=True,blank=True)
-  neighbourhood = models.ForeignKey(Neighbourhood,null=True,blank=True)
+  user = models.ForeignKey(User,null=True,on_delete=models.CASCADE)
+  neighbourhood = models.ForeignKey(Neighbourhood,null=True,on_delete=models.CASCADE)
 
   def save_business(self):
     self.save
@@ -142,8 +142,8 @@ class Join(models.Model):
   '''
   class that enables one join neighbourhoods
   '''
-  user_id = models.OneToOneField(User)
-  hood_id = models.ForeignKey(Neighbourhood)
+  user_id = models.OneToOneField(User,on_delete=models.CASCADE)
+  hood_id = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
 
   def __str__(self):
     return self.user_id
@@ -154,8 +154,8 @@ class Posts(models.Model):
   '''
   topic = models.CharField(max_length=100)
   post = models.TextField()
-  user = models.ForeignKey(User)
-  hood = models.ForeignKey(Neighbourhood)
+  user = models.ForeignKey(User,on_delete=models.CASCADE)
+  hood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
 
   def save_posts(self):
     self.save()
@@ -177,8 +177,8 @@ class Comments(models.Model):
   Class that enables commenting on a posted topic
   '''
   comment = models.TextField()
-  user = models.ForeignKey(User)
-  post = models.ForeignKey(Posts)
+  user = models.ForeignKey(User,on_delete=models.CASCADE)
+  post = models.ForeignKey(Posts,on_delete=models.CASCADE)
 
   def save_comment(self):
     self.save()

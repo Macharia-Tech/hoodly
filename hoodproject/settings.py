@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'hood.app.HoodConfig',
+    'hood.apps.HoodConfig',
     'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'hoodprject.urls'
+ROOT_URLCONF = 'hoodproject.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'hoodprject.wsgi.application'
+WSGI_APPLICATION = 'hoodproject.wsgi.application'
 
 
 # Database
@@ -77,8 +77,10 @@ WSGI_APPLICATION = 'hoodprject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hoodly',
+        'USER': 'audrey',
+        'PASSWORD': '123masha123',
     }
 }
 
@@ -107,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
